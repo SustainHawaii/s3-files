@@ -20,6 +20,8 @@ s3Files.connect = function (opts) {
   }
 
   self.bucket = opts.bucket
+
+  self.extraGetObjectParams = opts.extraGetObjectParams || {}
   return self
 }
 
@@ -48,7 +50,7 @@ s3Files.createFileStream = function (keyStream, preserveFolderPath) {
     fileCounter += 1
 
     // console.log('->file', file);
-    var params = { Bucket: self.bucket, Key: file }
+    var params = { Bucket: self.bucket, Key: file, ...self.extraGetObjectParams }
     var s3File = self.s3.getObject(params).createReadStream()
 
     s3File.pipe(
