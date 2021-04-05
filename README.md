@@ -25,7 +25,7 @@ Refer to the [AWS SDK][aws-sdk-url] for authenticating to AWS prior to using thi
 
 ```javascript
 
-var s3Files = require('src/s3-files')
+var s3Files = require('s3-files')
 
 var region = 'bucket-region'
 var bucket = 'name-of-s3-bucket'
@@ -51,7 +51,7 @@ s3Files.createFileStream(keyStream).on('data', function (chunk) {
 
 ```javascript
 
-var s3Files = require('src/s3-files')
+var s3Files = require('s3-files')
 
 var region = 'bucket-region'
 var bucket = 'name-of-s3-bucket'
