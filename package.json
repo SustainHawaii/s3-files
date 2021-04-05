@@ -1,6 +1,6 @@
 {
   "name": "@sustainhawaii/s3-files",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Stream selected files from an Amazon S3 bucket/folder",
   "main": "src/s3-files.js",
   "scripts": {
