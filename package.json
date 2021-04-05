@@ -1,6 +1,6 @@
 {
   "name": "@sustainhawaii/s3-files",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Stream selected files from an Amazon S3 bucket/folder",
   "main": "s3-files.js",
   "scripts": {
@@ -31,7 +31,12 @@
     "proxyquire": "^2.1.0",
     "sinon": "^7.3.2",
     "standard": "^12.0.1",
-    "tap": "^13.1.2"
+    "tap": "^13.1.2",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
   },
   "bugs": {
     "url": "https://github.com/SustainHawaii/s3-files/issues"
