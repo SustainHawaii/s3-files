@@ -3,6 +3,7 @@ var AWS = require('aws-sdk')
 var streamify = require('stream-array')
 var concat = require('concat-stream')
 var path = require('path')
+var b64 = require('base64-js')
 
 var s3Files = {}
 module.exports = s3Files
@@ -51,13 +52,13 @@ s3Files.createFileStream = function (keyStream, preserveFolderPath) {
 
     // console.log('->file', file);
     var params = { Bucket: self.bucket, Key: file, ...self.extraGetObjectParams }
-    var s3File = self.s3.getObject(params).createReadStream({ encoding: 'base64' })
+    var s3File = self.s3.getObject(params).createReadStream()
 
     s3File.pipe(
       concat(function buffersEmit (buffer) {
         // console.log('buffers concatenated, emit data for ', file);
         var path = preserveFolderPath ? file : file.replace(/^.*[\\/]/, '')
-        rs.emit('data', { data: buffer, path: path })
+        rs.emit('data', { data: b64.toByteArray(buffer), path: path })
       })
     )
     s3File.on('end', function () {
