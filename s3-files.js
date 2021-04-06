@@ -51,7 +51,7 @@ s3Files.createFileStream = function (keyStream, preserveFolderPath) {
 
     // console.log('->file', file);
     var params = { Bucket: self.bucket, Key: file, ...self.extraGetObjectParams }
-    var s3File = self.s3.getObject(params).createReadStream()
+    var s3File = self.s3.getObject(params).createReadStream({ encoding: 'base64' })
 
     s3File.pipe(
       concat(function buffersEmit (buffer) {
