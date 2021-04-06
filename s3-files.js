@@ -57,6 +57,13 @@ s3Files.createFileStream = function (keyStream, preserveFolderPath) {
       concat(function buffersEmit (buffer) {
         // console.log('buffers concatenated, emit data for ', file);
         var path = preserveFolderPath ? file : file.replace(/^.*[\\/]/, '')
+        /*
+        TODO:
+          assuming buffer contains base64 string, decode it this way:
+          1. get string from buffer with toString()
+          2. create new buffer with
+         */
+        console.log({ data: buffer, path: path })
         rs.emit('data', { data: buffer, path: path })
       })
     )
