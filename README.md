@@ -45,6 +45,17 @@ var keyStream = s3Files.connect({
 s3Files.createFileStream(keyStream).on('data', function (chunk) {
   console.log(chunk.path, chunk.data.length)
 })
+
+// Add extra parameters to use with S3.getObject with optional extraGetObjectParams parameter:
+
+// Create a stream of keys.
+var keyStream = s3Files.connect({
+  region: region,
+  bucket: bucket,
+  extraGetObjectParams: {
+    s3CustomerKey: AWS_CUSTOMER_KEY
+  }
+}).createKeyStream(folder, [file1, file2, file3, file4])
 ```
 
 ## Usage: Stream files from the root of a bucket
